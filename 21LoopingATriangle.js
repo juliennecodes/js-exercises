@@ -60,3 +60,36 @@ textForRow(5);
 textForRow(5);
 textForRow(3);
 textForRow(2);
+
+//------------------------------------------------------------------------------
+for (let i = "*"; i.length <= 5; i+="*"){
+  console.log(i);
+}
+
+//Okay semi-nevermind about my question on initialize being a feature
+//it didn't click to me because I was seeing the initialize as a feature because
+//it was outside the reach of the loop
+
+//I was comparing it to this situation
+for (i = 0; i < 5; i++){
+  let a = 1;
+  console.log(a);
+  a += 2;
+}
+//so the loop that runs always returns 1 then 3
+
+//I thought the solution was to leave a out of the for loop so the assigned
+//value isn't perpetually 1
+
+let a = 1;
+
+for (i = 0; i < 5; i++){
+  console.log(a);
+  a += 2;
+}
+
+//When you initialize in the loop, it's the same
+for (a = 1, i = 0; i < 5; i++){
+  console.log(a);
+  a += 2;
+}
