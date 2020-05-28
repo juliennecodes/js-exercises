@@ -93,3 +93,43 @@ for (a = 1, i = 0; i < 5; i++){
   console.log(a);
   a += 2;
 }
+
+//------------------------------------------------------------------------------
+//Updating a value inside loop control
+for (a = 1, i = 0; i < 5; a += 2, i++){
+  console.log(a);
+}
+
+//------------------------------------------------------------------------------
+function textForRow(numberOfHash){
+  return "#".repeat(numberOfHash);
+}
+
+function range (start, end){
+  let numbers = [];
+
+  for (let n = start; n <= end; n++){
+    numbers.push(n);
+  }
+
+  return numbers;
+}
+
+range(1, 7)
+  .map(textForRow)
+  .forEach(row => console.log(row));
+
+//get the range of numbers between 1 to 7
+//gets an array of numbers between 1 to 7
+
+//map method creates an array using the array of numbers
+//each element in the array is provided as argument to textForRow
+//returns an array of the returned values from textForRow
+
+//forEach executes the function for each of the element in the array
+//which are the hashes
+
+//So in declarative,
+//each action is compartmentalized?
+//because they are compartmentalized actions, their purpose is clear
+//those individual actions build up to something bigger?
