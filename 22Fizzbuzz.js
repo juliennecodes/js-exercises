@@ -1,17 +1,69 @@
-// Fizzbuzz
-let number = 0;
-let counter = 0;
-while (counter < 100) {
-  number += 1;
+for (number = 1; number <= 100; number++){
+  if (i % 3 === 0 && i % 5 === 0){
+    console.log("FizzBuzz");
+  }
 
-  if (number % 3 === 0) {
+  else if (number % 3 == 0) {
     console.log("Fizz");
-  } else if (number % 5 === 0) {
+  }
+
+  else if (number % 5 == 0) {
     console.log("Buzz");
-  } else if (number % 3 === 0 && number % 5 === 0) {
-    console.log("Fizzbuzz");
-  } else {
+  }
+
+  else {
     console.log(number);
   }
-  counter += 1;
+}
+
+//Split the calculation of fizzbuzz from looping and logging
+
+// Calculation of FizzBuzz
+function isDivByThree(number) {
+  return number % 3 === 0;
+}
+
+function isDivByFive(number) {
+  return number % 5 === 0;
+}
+
+//Looping and logging
+for (number = 1; number <= 100; number++){
+  if (isDivByThree(number) && isDivByFive(number)) {
+    console.log("Fizzbuzz");
+  }
+
+  else if (isDivByThree(number)) { console.log("Fizz");}
+
+  else if (isDivByFive(number)) {console.log("Buzz");}
+
+  else {
+    console.log(number);
+  }
+}
+
+//------------------------------------------------------------------------------
+// Separating calculation from logging and iteration
+//Calculation
+function fizzBuzz(number){
+  if (number % 3 === 0 && number % 5 === 0){
+    return "Fizzbuzz";
+  }
+
+  else if (number % 3 == 0) {
+    return "Fizz";
+  }
+
+  else if (number % 5 == 0) {
+    return "Buzz";
+  }
+
+  else {
+    return number.toString();
+  }
+}
+
+//iterations and logging
+for (n = 1; n <= 100; n++){
+  console.log(fizzBuzz(n));
 }
