@@ -41,3 +41,29 @@ for (number = 1; number <= 100; number++){
     console.log(number);
   }
 }
+
+//------------------------------------------------------------------------------
+// Separating calculation from logging and iteration
+//Calculation
+function fizzBuzz(number){
+  if (number % 3 === 0 && number % 5 === 0){
+    return "Fizzbuzz";
+  }
+
+  else if (number % 3 == 0) {
+    return "Fizz";
+  }
+
+  else if (number % 5 == 0) {
+    return "Buzz";
+  }
+
+  else {
+    return number.toString();
+  }
+}
+
+//iterations and logging
+for (n = 1; n <= 100; n++){
+  console.log(fizzBuzz(n));
+}
