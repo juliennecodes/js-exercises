@@ -105,7 +105,7 @@ vectorOne.length();
 //I think this defeats the purpose of get, which is supposed to execute
 //the function when you look up the property
 
-//So get is iike a property that get dynamically evaluated and presented as if
+//So get is like a property that get dynamically evaluated and presented as if
 //the value was inputted straight away?
 //------------------------------------------------------------------------------
 //How to attach it to the prototype...hmmm...where can I insert get?
