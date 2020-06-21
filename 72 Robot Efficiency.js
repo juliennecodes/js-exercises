@@ -18,8 +18,6 @@ function shortestRouteRobot({village, currentLocation, parcels}, route){
 function findParcelRoutes(currentLocation, parcels){
     let routes = [];
     for (let parcel of parcels){
-      //ugh this was the missing code, I forgot to only collect the routes for
-      //the uncollected parcels
       if (parcel.currentLocation !== currentLocation){
         routes.push(findRoute(currentLocation, parcel.currentLocation));
       }
@@ -42,6 +40,3 @@ function findShortestRoute(routes){
 function haveUncollectedParcels(currentLocation, parcels){
   return parcels.some(parcel => parcel.currentLocation !== currentLocation);
 }
-
-//runRobot(VillageState.scenario(), shortestRouteRobot, []);
-//runRobotAnimation(VillageState.scenario(), shortestRouteRobot, []);
