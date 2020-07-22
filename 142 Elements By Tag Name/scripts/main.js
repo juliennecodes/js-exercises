@@ -1,19 +1,9 @@
-//function takes a node and a tag name
-//return an array containing all descendant element nodes with the given tag name
+//Problem
+//because descendants is a global binding, every getDescendants call adds onto it
 
-// function byTagName(node, tagName){
-//   return node.getElementsByTagName(tagName);
-// }
-//
-byTagName(document.body, "h1").length;
-byTagName(document.body, "span").length;
-
-let paragraph = document.querySelector("p");
-byTagName(paragraph, "span").length;
-
-//Oh, you're supposed to make your own version of getElementsByTagName. ok
+//Redo with descendants instead of direct children
 function byTagName(node, tagName){
-  let descendants = node.children; //I think this only returns immediate though
+  let descendants = getDescendants(node);
   let wantedTags = [];
 
   for(let descendant of descendants){
@@ -24,25 +14,23 @@ function byTagName(node, tagName){
 
   return wantedTags;
 }
-
 //------------------------------------------------------------------------------
 //recursion?
 //a way to explore nested structures?
 
-let descendants = [];
 
-function getDescendants(node){
+function x(node, descendants){
   if (hasChildren(node)){
-    for (let nodeChild of node.children){
-      getDescendants(nodeChild)
+    descendants.concat(Array.from(node.children))// this is an error because it returns an HTML collection, I'm not sure if that is an array or not
+    for (let nodeChild of Array.from(node.children)){
+      x(nodeChild);
     }
   }
 
   else {
-    descendants.push(node)
+    descendants.push(node);
   }
 
-  return descendants;
 }
 
 //why nodes? Can't I think of them as elements?
@@ -52,20 +40,32 @@ function hasChildren(x){
   return x.children.length > 0;
 }
 
+
 //------------------------------------------------------------------------------
-//Redo with descendants instead of direct children
-function byTagName(node, tagName){
-  let descendants = getDescendants(node); //I think this only returns immediate though
-  let wantedTags = [];
+//how to keep global binding private
+//have a function that returns the array
+//so declare array
+//do stuff with array
+//return array
 
-  for(let descendant of descendants){
-    if(descendant.nodeName.toLowerCase() === tagName){
-      wantedTags.push(descendant);
-    }
-  }
+function getDescendants(node){
+  let descendantsArray = [];
 
-  return wantedTags;
+  //do stuff to fill descendants
+  //result should be elements filling up descendants
+  x(node, descendantsArray);
+
+  return descendantsArray;
 }
+
+byTagName(document.body, "h1");
+
 //------------------------------------------------------------------------------
-//Problem
-//because descendants is a global binding, every getDescendants call adds onto it
+//I don't think the descendantsArray is being passed properly
+//an error shows up
+// main.js:24 Uncaught TypeError: Cannot read property 'concat' of undefined
+//     at x (main.js:24)
+//     at x (main.js:26)
+//     at getDescendants (main.js:56)
+//     at byTagName (main.js:6)
+//     at main.js:61
