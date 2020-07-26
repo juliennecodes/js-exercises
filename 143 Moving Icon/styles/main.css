@@ -1,0 +1,22 @@
+.boundingContainer {
+  height: 320px;
+  width: 320px;
+  border: 12px solid;
+  position: relative;
+}
+
+.image {
+  width: 32px;
+}
+
+.imageApple{
+  position: absolute;
+  /* top: 144px; */
+  /* left: 144px; */
+}
+
+.imageAndroid{
+  position: absolute;
+  /* top: 10px; */
+  /* left: 144px; */
+}
