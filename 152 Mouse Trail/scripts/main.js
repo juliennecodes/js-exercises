@@ -27,7 +27,6 @@ function createTrail(eObject){
   let xCoordinate = xCoordinateOf(eObject);
   let yCoordinate = yCoordinateOf(eObject);
 
-  console.log(xCoordinate);
   let trailElement = createTrailElement();
 
   field.appendChild(trailElement);
