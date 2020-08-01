@@ -27,7 +27,11 @@ function createTrail(eObject){
   let xCoordinate = xCoordinateOf(eObject);
   let yCoordinate = yCoordinateOf(eObject);
 
+  console.log(xCoordinate);
   let trailElement = createTrailElement();
 
-  window.setTimeout(assignCoordinates(trailElement, xCoordinate, yCoordinate), 500);
+  field.appendChild(trailElement);
+
+  assignCoordinates(trailElement, xCoordinate, yCoordinate);
+  // window.setTimeout(assignCoordinates(trailElement, xCoordinate, yCoordinate), 500);
 }
