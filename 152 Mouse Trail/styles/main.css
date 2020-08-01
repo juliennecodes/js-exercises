@@ -1,0 +1,12 @@
+.field {
+  border: 5px solid black;
+  width: 320px;
+  height: 320px;
+  position: relative;
+  top: 25vh;
+  margin: 0 auto;
+}
+
+.jsTrailElement{
+  position: absolute;
+}
