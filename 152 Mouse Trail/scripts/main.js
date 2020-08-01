@@ -23,19 +23,11 @@ function assignCoordinates(element, xCoordinate, yCoordinate){
   element.style.top = `${yCoordinate}px`;
 }
 
-// function createTrail(eObject){
-//   // console.log(eObject.offsetX);
-//
-//   //get x coordinate
-//   //get y coordinate
-//   let xCoordinate = xCoordinateOf(eObject);
-//   let yCoordinate = yCoordinateOf(eObject);
-//
-//   //arrange for the trailing elements
-//   let trailElement = createTrailElement();
-//   // assignCoordinates(trailElement, xCoordinate, yCoordinate);
-//   window.setTimeout(assignCoordinates(trailElement, xCoordinate, yCoordinate), 500);
-//     //get trailing elements
-//     //assign x and y coordinate to trailing elements
-//     //but have it on delay
-// }
+function createTrail(eObject){
+  let xCoordinate = xCoordinateOf(eObject);
+  let yCoordinate = yCoordinateOf(eObject);
+
+  let trailElement = createTrailElement();
+
+  window.setTimeout(assignCoordinates(trailElement, xCoordinate, yCoordinate), 500);
+}
