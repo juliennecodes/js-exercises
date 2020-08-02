@@ -42,34 +42,62 @@ let tabButtons = Array.from(document.querySelectorAll(".jsTabButton"));
 //   console.log(e.target);
 // }
 
+tabButtons.forEach((button, index) =>
+  button.addEventListener("click", () => displayTab(index)));
+
+// This is equivalent to the above forEach
+// for (let i = 0; i < tabButtons.length; i++) {
+//   const button = tabButtons[i];
+//   button.addEventListener("click", () => displayTab(i));
+// }
+
+function displayTab(tabIndex) {
+  tabs.forEach((tab, idx) =>
+    tab.style.display = idx === tabIndex ? "block" : "none");
+}
+
+// This is equivalent to the above forEach
+// function displayTab(tabIndex) {
+//   for (let i = 0; i < tabs.length; i++) {
+//     const tab = tabs[i];
+//     if (idx === tabIndex) {
+//       tab.style.display = "block";
+//     } else {
+//       tab.style.display = "none";
+//     }
+//   }
+// }
+
+displayTab(1);
+
 //specific situations
-tabButtons[0].addEventListener("click", displayTabZero);
-function displayTabZero(){
-  tabs[0].style.display = "block";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "none";
-}
+// tabButtons[0].addEventListener("click", displayTabZero);
+// function displayTabZero(){
+//   tabs[0].style.display = "block";
+//   tabs[1].style.display = "none";
+//   tabs[2].style.display = "none";
+// }
 
-tabButtons[1].addEventListener("click", displayTabOne);
-function displayTabOne(){
-  tabs[0].style.display = "none";
-  tabs[1].style.display = "block";
-  tabs[2].style.display = "none";
-}
+// tabButtons[1].addEventListener("click", displayTabOne);
+// function displayTabOne(){
+//   tabs[0].style.display = "none";
+//   tabs[1].style.display = "block";
+//   tabs[2].style.display = "none";
+// }
 
-tabButtons[2].addEventListener("click", displayTabTwo);
-function displayTabTwo(){
-  tabs[0].style.display = "none";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "block";
-}
+// tabButtons[2].addEventListener("click", displayTabTwo);
+// function displayTabTwo(){
+//   tabs[0].style.display = "none";
+//   tabs[1].style.display = "none";
+//   tabs[2].style.display = "block";
+// }
 
 
-//setting up default view
-function defaultState(){
-  tabs[0].style.display = "block";
-  tabs[1].style.display = "none";
-  tabs[2].style.display = "none";
-}
+// //setting up default view
+// function defaultState(){
+//   tabs[0].style.display = "block";
+//   tabs[1].style.display = "none";
+//   tabs[2].style.display = "none";
+// }
 
-defaultState();
+// defaultState();
