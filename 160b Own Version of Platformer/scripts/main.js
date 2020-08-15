@@ -117,20 +117,84 @@ function putPlayerInWorld(world){
 putPlayerInWorld(world1);
 
 //------------------------------------------------------------------------------
+//ADDING EVENT LISTENERS
+// window.addEventListener("keydown", move);
+
+//problem, how to pass it the player reference? or the world reference?
+// function move(e, world){
+//   let player = world.player[0];
+//
+//   if (e.key === "ArrowLeft"){
+//     player.x -= 1;
+//   }
+//
+//   if (e.key === "ArrowRight"){
+//     let player.x += 1;
+//   }
+// }
+
+//so the deal is, when you keydown on window
+//it calls move function
+//move function moves the player to the left or to the right depending on the arrow key pressed
+//how do you pass an argument to an event listener?
+
+// window.addEventListener("keydown", (e, world1) => {
+//   let player = world.player[0];
+//
+//   if (e.key === "ArrowLeft"){
+//     player.x -= 1;
+//   }
+//
+//   if (e.key === "ArrowRight"){
+//     let player.x += 1;
+//   }
+// })
+
+//I think this should work
+
+//let's test
+
+//or actually, let's do higher order function
+function move(world, e){
+  return function(e){
+    let player = world.player[0];
+
+    if (e.key === "ArrowLeft"){
+      player.x -= 1;
+    }
+
+    if (e.key === "ArrowRight"){
+      player.x += 1;
+    }
+  }
+}
+
+let playerMove1 = move(world1);
+
+window.addEventListener("keydown", playerMove1);
+
+//So I think this updates the player properties
+//how do I update the player representation to reflect that?
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------
 //ERROR LOGS AND COMMENTS
-//I had a minor hitch. It said player.create was not a function.
-//I forgot to put static in front of the method
-
-//I appended the player into the grid
-//However, I called it later so it is the last element and instead of being inside the grid,
-//it is outside of it
-//z index?
-//I still don't know how the x and y coordinate fit
-
-//I tried z index, it is still being rendered on the bottom
-
-//Okay, after looking at the code, use x as left value, use y as top value
-
-//It works!
-
 //Now to make it move.
+
+//Parts
+//event listener for keydowns on left and right arrows
+//keydown on left, move player's x coordinate in the -, -12? or - 1 * half of scale, or just scale? let's do scale first
+//keydown on right, move player's x coordinate in the +, +12?
+
+//maybe do up later, I don't know what to do with gravity just yet, it's not as straightforward
+
+//okay, so keydown for left arrow, player.x -= -1,
+//maybe do the scale in the update, the update takes the x property and multiplies it there
+
+//keydown for the right arrow, player.x += 1;
