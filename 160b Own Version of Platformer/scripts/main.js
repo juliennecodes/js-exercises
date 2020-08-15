@@ -6,8 +6,15 @@ let characterMap1 = `
 `;
 
 class Player {
-  constructor() {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.width = 0.5;
+    this.height = 1;
+  }
 
+  static create(x, y){
+    return new Player(x,y);
   }
 }
 
@@ -18,12 +25,14 @@ let characterLegends = {
   // "o" : Coin
 }
 
+//------------------------------------------------------------------------------
 // let rows = characterMap1.trim().split("\n").map(row => [...row]);
 class World {
   constructor(map) {
     this.rows = map.trim().split("\n").map(row => [...row]);
     this.width = this.rows[0].length;
     this.height = this.rows.length;
+    this.player = [];
   }
 
   get createWordMap() {
@@ -36,8 +45,10 @@ class World {
                 return characterLegends[characterLegendsProperty];
               } else {
                 //revisit this
-                // characterLegends[characterLegendsProperty].create(new Position(x, y))
-                return "empty"
+                // this.player.push(playercharacterLegends[characterLegendsProperty].create(x, y));
+                this.player.push(Player.create(x, y));
+                //later, if you add more types, add checks to make sure that it is a player, or a lava, or a coin and create instances appropriately
+                return "empty";
               }
             }
           } //for
@@ -90,3 +101,28 @@ let world1GridRepresentation =  createElementGridRepresentation(world1);
 let worldContainer = createDisplayContainer(world1);
 worldContainer.appendChild(world1GridRepresentation);
 document.querySelector("main").appendChild(worldContainer);
+
+//------------------------------------------------------------------------------
+function putPlayerInWorld(world){
+  let player = world.player[0];
+  let playerRepresentation = createElementWithClassName("div", "player");
+  playerRepresentation.style.width = `${player.width * scale}px`;
+  playerRepresentation.style.height = `${player.height * scale}px`;
+  playerRepresentation.style.zIndex = "1";
+  world1GridRepresentation.appendChild(playerRepresentation);
+}
+
+putPlayerInWorld(world1);
+
+//------------------------------------------------------------------------------
+//ERROR LOGS AND COMMENTS
+//I had a minor hitch. It said player.create was not a function.
+//I forgot to put static in front of the method
+
+//I appended the player into the grid
+//However, I called it later so it is the last element and instead of being inside the grid,
+//it is outside of it
+//z index?
+//I still don't know how the x and y coordinate fit
+
+//I tried z index, it is still being rendered on the bottom
