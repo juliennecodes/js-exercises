@@ -1,0 +1,67 @@
+/*--------------------------------------------------------------
+Normalizing Styles
+--------------------------------------------------------------*/
+body, h1, h2, ul, li, a, p, span {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+/*--------------------------------------------------------------
+Base Styles
+--------------------------------------------------------------*/
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1{
+  font-size: 10px;
+}
+
+footer {
+  font-size: 8px;
+}
+
+header, main, footer {
+  padding: 12px 24px;
+}
+/*--------------------------------------------------------------
+Component Styles
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+Layout Styles
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+Script Styles
+--------------------------------------------------------------*/
+.jsDisplay {
+  position: relative;
+  background-color: pink;
+}
+.world {
+  position: relative;
+  border: 5px solid black;
+}
+.player {
+background-color: hsl(208, 50%, 24%);
+position: absolute;
+}
+
+.empty {
+background-color: hsl(208, 72%, 90%);
+position: absolute;
+}
+
+.wall {
+background-color: hsl(208, 72%, 64%);
+position: absolute;
+}
