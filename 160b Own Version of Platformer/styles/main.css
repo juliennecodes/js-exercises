@@ -59,7 +59,7 @@ Script Styles
 }
 .player {
 background-color: hsl(208, 50%, 24%);
-/* position: absolute; */
+position: absolute;
 }
 
 .empty {

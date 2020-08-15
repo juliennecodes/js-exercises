@@ -108,6 +108,8 @@ function putPlayerInWorld(world){
   let playerRepresentation = createElementWithClassName("div", "player");
   playerRepresentation.style.width = `${player.width * scale}px`;
   playerRepresentation.style.height = `${player.height * scale}px`;
+  playerRepresentation.style.top = `${player.y * scale}px`;
+  playerRepresentation.style.left = `${player.x * scale}px`;
   playerRepresentation.style.zIndex = "1";
   world1GridRepresentation.appendChild(playerRepresentation);
 }
@@ -126,3 +128,9 @@ putPlayerInWorld(world1);
 //I still don't know how the x and y coordinate fit
 
 //I tried z index, it is still being rendered on the bottom
+
+//Okay, after looking at the code, use x as left value, use y as top value
+
+//It works!
+
+//Now to make it move.
