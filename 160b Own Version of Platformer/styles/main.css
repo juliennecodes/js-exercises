@@ -14,6 +14,12 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+table{
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+}
 /*--------------------------------------------------------------
 Base Styles
 --------------------------------------------------------------*/
@@ -53,15 +59,15 @@ Script Styles
 }
 .player {
 background-color: hsl(208, 50%, 24%);
-position: absolute;
+/* position: absolute; */
 }
 
 .empty {
 background-color: hsl(208, 72%, 90%);
-position: absolute;
+/* position: absolute; */
 }
 
 .wall {
 background-color: hsl(208, 72%, 64%);
-position: absolute;
+/* position: absolute; */
 }

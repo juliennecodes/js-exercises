@@ -1,7 +1,17 @@
+// let characterMap1 = `
+// ############
+// #..........#
+// #....@...o.#
+// ############
+// `;
+//This map has a coin and it creates an undefined class in the grid representation
+//I'll revisit this later when I'm doing player interaction. For now, it'll be a wall
+
+
 let characterMap1 = `
 ############
 #..........#
-#....@...o.#
+#....@...#.#
 ############
 `;
 
@@ -24,30 +34,28 @@ class World {
     this.width = this.rows[0].length;
     this.height = this.rows.length;
   }
-}
 
-//returns strings describing what the characters are
-//strings correspond to a square of a grid
-function createWordMap(world) {
-  return world.rows.map((row, y) => row.map(
-      (token, x) => {
-        for (let characterLegendsProperty of Object.keys(characterLegends)) {
-          if (token === characterLegendsProperty) {
-            //characterLegends[characterLegendsProperty] is type
-            if (typeof characterLegends[characterLegendsProperty] === "string") {
-              return characterLegends[characterLegendsProperty];
-            } else {
-              //revisit this
-              // characterLegends[characterLegendsProperty].create(new Position(x, y))
-              return "empty"
+  get createWordMap() {
+    return this.rows.map((row, y) => row.map(
+        (token, x) => {
+          for (let characterLegendsProperty of Object.keys(characterLegends)) {
+            if (token === characterLegendsProperty) {
+              //characterLegends[characterLegendsProperty] is type
+              if (typeof characterLegends[characterLegendsProperty] === "string") {
+                return characterLegends[characterLegendsProperty];
+              } else {
+                //revisit this
+                // characterLegends[characterLegendsProperty].create(new Position(x, y))
+                return "empty"
+              }
             }
-          }
-        } //for
-      }
-    ) //row.map
-  ) //this.rows map
-} //createTypeMap
+          } //for
+        }
+      ) //row.map
+    ) //this.rows map
+  } //createTypeMap
 
+}
 
 //PROBLEM
 //instead of depending on wordMap
@@ -56,12 +64,32 @@ function createWordMap(world) {
 //width of table is worldObject width
 //height of table is worldObject height
 
-function translateWordMapToElementGridRepresentation(wordMap) {
-  let wordMapTable = document.createElement("table");
-  wordMapTable.style.width =
+// function translateWordMapToElementGridRepresentation(wordMap) {
+//   let wordMapTable = document.createElement("table");
+//   wordMapTable.style.width =
+//   wordMap.map(row => {
+//       let wordMapRow = document.createElement("tr");
+//       wordMapTable.appendChild(wordMapRow);
+//       row.map(type => {
+//           let element = createElementWithClassName("td", type);
+//           wordMapRow.appendChild(element);
+//         } //type
+//       ) //row.map
+//     } //row
+//   ) //wordMap.map
+//   return wordMapTable;
+// }
+let scale = 24;
+
+function createElementGridRepresentation(world){
+  let grid = document.createElement("table");
+  grid.style.width = `${world.width * scale}px`;
+  let wordMap = world.createWordMap;
+
   wordMap.map(row => {
       let wordMapRow = document.createElement("tr");
-      wordMapTable.appendChild(wordMapRow);
+      wordMapRow.style.height = `${scale}px`;
+      grid.appendChild(wordMapRow);
       row.map(type => {
           let element = createElementWithClassName("td", type);
           wordMapRow.appendChild(element);
@@ -69,18 +97,14 @@ function translateWordMapToElementGridRepresentation(wordMap) {
       ) //row.map
     } //row
   ) //wordMap.map
-  return wordMapTable;
+  return grid;
 }
-
-
 
 function createElementWithClassName(elementType, className) {
   let element = document.createElement(elementType);
   element.classList.add(className);
   return element;
 }
-
-let scale = 24;
 
 function createDisplayContainer(world) {
   let display = document.createElement("div");
@@ -92,8 +116,7 @@ function createDisplayContainer(world) {
 
 
 let world1 = new World(characterMap1);
-let wordMap1 = createWordMap(world1);
-let world1GridRepresentation = translateWordMapToElementGridRepresentation(wordMap1);
+let world1GridRepresentation =  createElementGridRepresentation(world1);
 
 let worldContainer = createDisplayContainer(world1);
 worldContainer.appendChild(world1GridRepresentation);
