@@ -1,13 +1,3 @@
-// let characterMap1 = `
-// ############
-// #..........#
-// #....@...o.#
-// ############
-// `;
-//This map has a coin and it creates an undefined class in the grid representation
-//I'll revisit this later when I'm doing player interaction. For now, it'll be a wall
-
-
 let characterMap1 = `
 ############
 #..........#
@@ -20,6 +10,7 @@ class Player {
 
   }
 }
+
 let characterLegends = {
   ".": "empty",
   "#": "wall",
@@ -57,28 +48,6 @@ class World {
 
 }
 
-//PROBLEM
-//instead of depending on wordMap
-//depend on the world object instead
-//that way, you have access to the width and height properties
-//width of table is worldObject width
-//height of table is worldObject height
-
-// function translateWordMapToElementGridRepresentation(wordMap) {
-//   let wordMapTable = document.createElement("table");
-//   wordMapTable.style.width =
-//   wordMap.map(row => {
-//       let wordMapRow = document.createElement("tr");
-//       wordMapTable.appendChild(wordMapRow);
-//       row.map(type => {
-//           let element = createElementWithClassName("td", type);
-//           wordMapRow.appendChild(element);
-//         } //type
-//       ) //row.map
-//     } //row
-//   ) //wordMap.map
-//   return wordMapTable;
-// }
 let scale = 24;
 
 function createElementGridRepresentation(world){
