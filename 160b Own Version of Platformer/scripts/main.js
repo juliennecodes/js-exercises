@@ -164,6 +164,20 @@ updatePlayer(world1);
 
 //now what I want is to not have to call updatePlayer(world1) to reflect the changes
 
+//so I want to press the key, which will adjust the x properties of the player
+//but this isn't seen by the user
+//the changes in the x properties have to be reflected in the player representation
+
+//bundle the changes and the appearance together?
+//and have that function be the one that is executed in the event listener?
+
+function movePlayer(){
+  //make the changes in the back
+
+  //give the changes an appearance in the front
+
+}
+
 
 
 //------------------------------------------------------------------------------
