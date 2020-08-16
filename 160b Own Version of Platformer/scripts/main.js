@@ -117,31 +117,19 @@ function putPlayerInWorld(world){
 putPlayerInWorld(world1);
 
 //------------------------------------------------------------------------------
-//ADDING EVENT LISTENERS
+//I think I have to adjust the event listener function
 function move(world, e){
-  return function(e){
-    let player = world.player[0];
+  let player = world.player[0];
 
-    if (e.key === "ArrowLeft"){
-      player.x -= 1;
-    }
+  if (e.key === "ArrowLeft"){
+    player.x -= 1;
+  }
 
-    if (e.key === "ArrowRight"){
-      player.x += 1;
-    }
+  if (e.key === "ArrowRight"){
+    player.x += 1;
   }
 }
 
-let playerMove1 = move(world1);
-
-window.addEventListener("keydown", playerMove1);
-
-//So I think this updates the player properties
-//how do I update the player representation to reflect that?
-
-//------------------------------------------------------------------------------
-//UPDATING PLAYER REPRESENTATION - used in conjunction with the event listener
-//so what I want to happen is for the player representation element to reflect the player x coordinate
 function updatePlayer(world){
   document.querySelector(".player").remove();
   let player = world.player[0];
@@ -154,31 +142,31 @@ function updatePlayer(world){
   world1GridRepresentation.appendChild(playerRepresentation);
 }
 
-updatePlayer(world1);
-//okay so this moves the player.
+// function movePlayer(world){
+//   //make the changes in the back
+//   move(world1);
+//   //give the changes an appearance in the front
+//   updatePlayer(world1);
+// }
 
-//the sequence is that
-//user presses the left or right arrow key
-//updatePlayer(world1) has to be called
-//once updatePlayer(world1) is called, the player representation moves to the new spot accordingly
 
-//now what I want is to not have to call updatePlayer(world1) to reflect the changes
-
-//so I want to press the key, which will adjust the x properties of the player
-//but this isn't seen by the user
-//the changes in the x properties have to be reflected in the player representation
-
-//bundle the changes and the appearance together?
-//and have that function be the one that is executed in the event listener?
-
-function movePlayer(){
-  //make the changes in the back
-
-  //give the changes an appearance in the front
-
+function movePlayer(world, e){
+  return function(e){
+    move(world, e);
+    updatePlayer(world);
+  }
 }
 
+let playerMove = movePlayer(world1);
 
+window.addEventListener("keydown", playerMove);
+//It works!
+
+//I had a slight error, earlier, I didn't include the event object in the function move so
+//there was no way for the e.key to work because there was no event object being passed down
+//Remember to pass the proper arguments down when dealing with nested functions
+
+//Next part, behaviour with walls or maybe should I do up arrow?
 
 //------------------------------------------------------------------------------
 //ERROR LOGS AND COMMENTS
