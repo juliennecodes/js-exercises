@@ -117,7 +117,6 @@ function putPlayerInWorld(world){
 putPlayerInWorld(world1);
 
 //------------------------------------------------------------------------------
-//I think I have to adjust the event listener function
 function move(world, e){
   let player = world.player[0];
 
@@ -142,17 +141,12 @@ function updatePlayer(world){
   world1GridRepresentation.appendChild(playerRepresentation);
 }
 
-// function movePlayer(world){
-//   //make the changes in the back
-//   move(world1);
-//   //give the changes an appearance in the front
-//   updatePlayer(world1);
-// }
-
-
 function movePlayer(world, e){
   return function(e){
+    //changes in the back
     move(world, e);
+
+    //appearances in the front
     updatePlayer(world);
   }
 }
@@ -162,24 +156,7 @@ let playerMove = movePlayer(world1);
 window.addEventListener("keydown", playerMove);
 //It works!
 
-//I had a slight error, earlier, I didn't include the event object in the function move so
-//there was no way for the e.key to work because there was no event object being passed down
-//Remember to pass the proper arguments down when dealing with nested functions
-
 //Next part, behaviour with walls or maybe should I do up arrow?
 
 //------------------------------------------------------------------------------
 //ERROR LOGS AND COMMENTS
-//Now to make it move.
-
-//Parts
-//event listener for keydowns on left and right arrows
-//keydown on left, move player's x coordinate in the -, -12? or - 1 * half of scale, or just scale? let's do scale first
-//keydown on right, move player's x coordinate in the +, +12?
-
-//maybe do up later, I don't know what to do with gravity just yet, it's not as straightforward
-
-//okay, so keydown for left arrow, player.x -= -1,
-//maybe do the scale in the update, the update takes the x property and multiplies it there
-
-//keydown for the right arrow, player.x += 1;
