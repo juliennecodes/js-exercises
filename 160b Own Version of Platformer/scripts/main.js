@@ -118,43 +118,6 @@ putPlayerInWorld(world1);
 
 //------------------------------------------------------------------------------
 //ADDING EVENT LISTENERS
-// window.addEventListener("keydown", move);
-
-//problem, how to pass it the player reference? or the world reference?
-// function move(e, world){
-//   let player = world.player[0];
-//
-//   if (e.key === "ArrowLeft"){
-//     player.x -= 1;
-//   }
-//
-//   if (e.key === "ArrowRight"){
-//     let player.x += 1;
-//   }
-// }
-
-//so the deal is, when you keydown on window
-//it calls move function
-//move function moves the player to the left or to the right depending on the arrow key pressed
-//how do you pass an argument to an event listener?
-
-// window.addEventListener("keydown", (e, world1) => {
-//   let player = world.player[0];
-//
-//   if (e.key === "ArrowLeft"){
-//     player.x -= 1;
-//   }
-//
-//   if (e.key === "ArrowRight"){
-//     let player.x += 1;
-//   }
-// })
-
-//I think this should work
-
-//let's test
-
-//or actually, let's do higher order function
 function move(world, e){
   return function(e){
     let player = world.player[0];
@@ -176,10 +139,30 @@ window.addEventListener("keydown", playerMove1);
 //So I think this updates the player properties
 //how do I update the player representation to reflect that?
 
+//------------------------------------------------------------------------------
+//UPDATING PLAYER REPRESENTATION - used in conjunction with the event listener
+//so what I want to happen is for the player representation element to reflect the player x coordinate
+function updatePlayer(world){
+  document.querySelector(".player").remove();
+  let player = world.player[0];
+  let playerRepresentation = createElementWithClassName("div", "player");
+  playerRepresentation.style.width = `${player.width * scale}px`;
+  playerRepresentation.style.height = `${player.height * scale}px`;
+  playerRepresentation.style.top = `${player.y * scale}px`;
+  playerRepresentation.style.left = `${player.x * scale}px`;
+  playerRepresentation.style.zIndex = "1";
+  world1GridRepresentation.appendChild(playerRepresentation);
+}
 
+updatePlayer(world1);
+//okay so this moves the player.
 
+//the sequence is that
+//user presses the left or right arrow key
+//updatePlayer(world1) has to be called
+//once updatePlayer(world1) is called, the player representation moves to the new spot accordingly
 
-
+//now what I want is to not have to call updatePlayer(world1) to reflect the changes
 
 
 
