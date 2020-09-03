@@ -12,7 +12,7 @@ function createTrapezoid(x, y, horizontalShift, verticalShift){
   cx.stroke();
 }
 
-createTrapezoid(20, 20, 30, 30);
+createTrapezoid(100, 20, 30, 30);
 createTrapezoid(100, 400, 10, 20)
 
 //RED DIAMOND
@@ -29,9 +29,8 @@ function createDiamond(startPointX, startPointY, horizontalShift, verticalShift,
     cx.fill();
 }
 
-createDiamond(100, 10, 50, 20);
-
-createDiamond(300, 200, 50, 50, "blue");
+createDiamond(200, 10, 50, 20);
+createDiamond(200, 200, 50, 50, "blue");
 
 //ZIGZAG
 // function createZigZag(x, y){
@@ -71,15 +70,15 @@ function isEven(x){
   return x % 2 === 0;
 }
 
-createZigZags(200, 100, 10, 50, 10);
-createZigZags(200, 300, 20, 50, 5);
+createZigZags(300, 100, 10, 50, 10);
+createZigZags(300, 300, 20, 50, 5);
 //STAR
 function toRadians(degrees) {
 return degrees * Math.PI / 180;
 }
 // Math.sin(toRadians(180));
 
-function createStar(radius, startX = 250, startY = 50){
+function createStar(radius, startX = 500, startY = 50){
   let angle = 0;
   cx.translate(startX, startY); //Oh it affects future context translation even if it is inside a function?
   cx.beginPath();
@@ -101,16 +100,19 @@ function createStar(radius, startX = 250, startY = 50){
 }
 
 createStar(50);
-createStar(25, 350, 350);
-createStar(85, 400, 100);
+createStar(25, 500, 350);
+createStar(85, 500, 500);
+//how do you create skips in the argument? can you give an argument for first and third but not second?
 
 //SPIRAL
-function createSpiral(radius, radiusIncrease, piIncrease){
+function createSpiral(radius, radiusIncrease, piIncrease, startPointX = 0, startPointY = 0, loops = 50){
   let start = 0;
   let end = 1;
 
+  cx.translate(startPointX, startPointY);
+
   cx.beginPath();
-  for(let i = 0; i < 50; i++){
+  for(let i = 0; i < loops; i++){
     cx.arc(100, 100, radius, start, end);
     radius = radius * radiusIncrease;
     start = end;
@@ -118,6 +120,13 @@ function createSpiral(radius, radiusIncrease, piIncrease){
   }
 
   cx.stroke();
+
+  cx.translate(-startPointX, -startPointY);
 }
 
-createSpiral(5, 1.1, 1.1);
+// createSpiral(5, 1.1, 1.1);
+// createSpiral(1, 1.25, 1.08);
+createSpiral(1, 1.05, 1.08, 600, 0);
+createSpiral(1, 1.05, 1.08, 600, 200, 100);
+createSpiral(2, 1.05, 1.08, 600, 400);
+createSpiral(5, 1.1, 1.08, 800, 0);
