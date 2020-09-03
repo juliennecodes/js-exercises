@@ -33,19 +33,6 @@ createDiamond(200, 10, 50, 20);
 createDiamond(200, 200, 50, 50, "blue");
 
 //ZIGZAG
-// function createZigZag(x, y){
-//   cx.beginPath();
-//   cx.moveTo(x, y); //
-//   cx.lineTo(x + 50, y + 10); //1
-//   cx.lineTo(x, y + 20); //2
-//   cx.lineTo(x + 50, y + 30 ); //3
-//   cx.lineTo(x, y + 40); //4
-//   cx.lineTo(x + 50, y + 50); //5
-//   cx.stroke();
-// }
-//
-// createZigZag(150, 10);
-
 function createZigZags(startPointX, startPointY, numberOfZigZags, horizontalShift, verticalShift){
   let x = startPointX;
   let y = startPointY;
@@ -72,6 +59,7 @@ function isEven(x){
 
 createZigZags(300, 100, 10, 50, 10);
 createZigZags(300, 300, 20, 50, 5);
+
 //STAR
 function toRadians(degrees) {
 return degrees * Math.PI / 180;
