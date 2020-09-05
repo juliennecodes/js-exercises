@@ -18,6 +18,8 @@ let canvas = document.querySelector("canvas");
 // // createBox(0, 0, 50, 100);
 // createBox(20, 20, 320, 320);
 
+
+//lesson - I think it's better to use an object so you don't have to keep track of what values you gave to a function call.
 class Box{
   constructor(startX, startY, width, height){
     this.startX = startX;
