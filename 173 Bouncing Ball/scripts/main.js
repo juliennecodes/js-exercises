@@ -1,6 +1,9 @@
 let canvas = document.querySelector("canvas");
 let cx = canvas.getContext("2d");
 // can you have more than one context object in a canvas?
+// lesson  - I think maybe just have one context object,
+//           context just provides the drawing interface, so it might be unnecessary to have many?
+
 
 class Box{
   constructor(startX, startY, width, height){
