@@ -14,9 +14,9 @@ class Box{
   }
 }
 
-let box = Box.create(20, 20, 320, 320);
+let boxA = Box.create(20, 20, 320, 320);
 
-console.log(box);
+console.log(boxA);
 
 function displayBox(box){
   cx.beginPath();
@@ -28,7 +28,7 @@ function displayBox(box){
   cx.stroke();
 }
 
-displayBox(box);
+displayBox(boxA);
 
 class Ball{
   constructor(centerX, centerY, size){
@@ -70,8 +70,16 @@ function moveBall(ball, xMovement, yMovement){
   return Ball.create(newCenterX, newCenterY, ball.size);
 }
 
-let movedBallA = moveBall(ballA, 50, 50);
-displayBall(movedBallA);
+let movedBallA = moveBall(ballA, 50, -50);
+// displayBall(movedBallA);
 
 //how do you remove previous drawing? so you can display a new one?
+function updateDisplay(box, ball){
+  cx.clearRect(box.startX, box.startY, box.width, box.height);
+  displayBox(box);
+  displayBall(ball);
+}
+
+// updateDisplay(boxA, movedBallA);
+
 //------------------------------------------------------------------------------
