@@ -21,54 +21,6 @@
   <footer>Copyright &copy;2020 Me!</footer>
 
   <script>
-    // let content = "chocolate cake";
-
-    // fetch("https://eloquentjavascript.net/author").then(
-    //   response => {
-    //     console.log(response.status);
-    //     console.log(response.headers.get("content-type"));
-    //   }
-    // );
-    //can there only be one fetch for multiple forms?
-
-    // fetch("https://eloquentjavascript.net/author",
-    //   {method: "POST", body: content})
-    //   .then(
-    //   response => {
-    //     console.log(response.status + content);
-    //   });
-    //   //405chocolate cake
-
-    // fetch("https://eloquentjavascript.net/author",
-    //     {
-    //       method: "POST",
-    //       body: content
-    //     })
-    //   .then(response => {
-    //     console.log(response.status);
-    //     console.log(response.status + content);
-    //   });
-
-    //how do you add request body
-
-    // fetch("https://eloquentjavascript.net/author",
-    //     {
-    //       method: "POST",
-    //       body: "content"
-    //     })
-    //   .then(response => {
-    //     console.log(response.status);
-    //
-    //     // console.log(request.method);
-    //     //error - request is not defined
-    //   });
-
-    // fetch("https://eloquentjavascript.net/author",
-    //   {header: {Accept: "text/html"}}).then
-    //   (response => console.log(response));
-      //error missing ) after argument list
-      //error resolved, I forgot to put quotation around the link
-
     fetch("https://eloquentjavascript.net/author",
       {headers: {accept: "text/plain"}})
       .then(response => response.text())
